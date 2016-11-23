@@ -1,0 +1,11 @@
+1. wczytać tekst do tablicy
+
+2. przejechać przez tablicę zapisując każdy znak w liście i ile się pojawił
+
+3. uporządkować listę malejąco
+
+3. zbudować drzewo binarne:
+	- grupować znaki parami zaczynając zawsze od tych które się najmniej pojawiły
+	- kontynuować dopóki zostanie tylko jedna wartość
+	
+4. w drzewie binarnym 
