@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.PriorityQueue;
+import java.util.TreeMap;
 
 /**
  * @author Jakub Janas
@@ -7,26 +6,19 @@ import java.util.PriorityQueue;
  */
 public class BinaryTree
 {
-	private HashMap<Character, Integer> map;
-	private PriorityQueue<HuffmanNode> pq;
+	private TreeMap<Character, Integer> map;
 	
 	/**
 	 * 
 	 */
 	public BinaryTree()
 	{
-		map = new HashMap<Character, Integer>();
-		pq = new PriorityQueue<HuffmanNode>();
+		map = new TreeMap<Character, Integer>();
 	}
 	
-	public HashMap<Character, Integer> getMap()
+	public TreeMap<Character, Integer> getMap()
 	{
 		return map;
-	}
-	
-	public PriorityQueue<HuffmanNode> getPQ()
-	{
-		return pq;
 	}
 
 	/**
@@ -57,11 +49,6 @@ public class BinaryTree
 			}
 		}
 		
-		sort();
-	}
-
-	private void sort()
-	{
-		
+		System.out.print(map);
 	}
 }
