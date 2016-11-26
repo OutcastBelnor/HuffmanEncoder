@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Set;
+=======
+import java.util.HashMap;
+import java.util.PriorityQueue;
+>>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 
 /**
  * @author Jakub Janas
@@ -11,6 +16,7 @@ import java.util.Set;
  */
 public class BinaryTree
 {
+<<<<<<< HEAD
 	public static Comparator<HuffmanNode> huffmanComparator = new Comparator<HuffmanNode>()
 	{
 		@Override
@@ -30,6 +36,8 @@ public class BinaryTree
         }
 	};
 	
+=======
+>>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 	private HashMap<Character, Integer> map;
 	private PriorityQueue<HuffmanNode> pq;
 	
@@ -39,13 +47,25 @@ public class BinaryTree
 	public BinaryTree()
 	{
 		map = new HashMap<Character, Integer>();
+<<<<<<< HEAD
 		pq = new PriorityQueue(huffmanComparator);
+=======
+		pq = new PriorityQueue<HuffmanNode>();
+>>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 	}
 	
 	public HashMap<Character, Integer> getMap()
 	{
 		return map;
 	}
+<<<<<<< HEAD
+=======
+	
+	public PriorityQueue<HuffmanNode> getPQ()
+	{
+		return pq;
+	}
+>>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 
 	/**
 	 * 
@@ -54,6 +74,7 @@ public class BinaryTree
 	public void createATree(String text)
 	{
 		characterCount(text);
+<<<<<<< HEAD
 		
 		Set<Character> characters = map.keySet();
 		Collection<Integer> frequency = map.values();
@@ -72,6 +93,8 @@ public class BinaryTree
 			HuffmanNode node = hn.next();
 			System.out.println(node.getCharacter() + " " + node.getFrequency());
 		}
+=======
+>>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 	}
 
 	/**
@@ -93,6 +116,15 @@ public class BinaryTree
 			}
 		}
 		
+<<<<<<< HEAD
 		System.out.println(map);
+=======
+		sort();
+	}
+
+	private void sort()
+	{
+		
+>>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 	}
 }

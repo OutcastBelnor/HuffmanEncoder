@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import java.util.TreeMap;
+=======
+import java.util.HashMap;
+>>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,7 +14,11 @@ import java.io.FileReader;
 public class jaj48CS21120Assign
 {
 	private static Scanner in;
+<<<<<<< HEAD
 	private TreeMap map;
+=======
+	private HashMap hashMap;
+>>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 	private String text;
 	private BinaryTree binaryTree;
 
@@ -84,6 +92,7 @@ public class jaj48CS21120Assign
 			System.out.println ("Specify the path to the file:");
 			String fileName = in.next();
 			
+<<<<<<< HEAD
 			try
 			{
 				FileHandler file = new FileHandler(fileName);
@@ -92,6 +101,17 @@ public class jaj48CS21120Assign
 			catch (FileNotFoundException fnf)
 			{
 				System.out.println("File not found. ");
+=======
+			Scanner fileReader;
+			try
+			{
+				fileReader = new Scanner (new FileReader(fileName));
+				text = fileReader.useDelimiter("\\Z").next();
+			}
+			catch (FileNotFoundException fnfe)
+			{
+				System.out.print ("File not found. ");
+>>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 			}
 		}
 	}
