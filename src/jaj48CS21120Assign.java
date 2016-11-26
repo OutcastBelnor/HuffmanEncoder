@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,7 +10,7 @@ import java.io.FileReader;
 public class jaj48CS21120Assign
 {
 	private static Scanner in;
-	private HashMap hashMap;
+	private TreeMap map;
 	private String text;
 	private BinaryTree binaryTree;
 
@@ -84,15 +84,14 @@ public class jaj48CS21120Assign
 			System.out.println ("Specify the path to the file:");
 			String fileName = in.next();
 			
-			Scanner fileReader;
 			try
 			{
-				fileReader = new Scanner (new FileReader(fileName));
-				text = fileReader.useDelimiter("\\Z").next();
+				FileHandler file = new FileHandler(fileName);
+				text = file.readFile();
 			}
-			catch (FileNotFoundException fnfe)
+			catch (FileNotFoundException fnf)
 			{
-				System.out.print ("File not found. ");
+				System.out.println("File not found. ");
 			}
 		}
 	}

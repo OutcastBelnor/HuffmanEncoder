@@ -1,4 +1,9 @@
-import java.util.TreeMap;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.PriorityQueue;
+import java.util.Set;
 
 /**
  * @author Jakub Janas
@@ -6,17 +11,38 @@ import java.util.TreeMap;
  */
 public class BinaryTree
 {
-	private TreeMap<Character, Integer> map;
+	public static Comparator<HuffmanNode> huffmanComparator = new Comparator<HuffmanNode>()
+	{
+		@Override
+		public int compare(HuffmanNode node1, HuffmanNode node2) {
+			if (node1.getFrequency() > node2.getFrequency())
+			{
+				return (int) -1;
+			}
+			else if (node1.getFrequency() == node2.getFrequency())
+			{
+				return (int) 0;
+			}
+			else
+			{
+				return (int) 1;
+			}
+        }
+	};
+	
+	private HashMap<Character, Integer> map;
+	private PriorityQueue<HuffmanNode> pq;
 	
 	/**
 	 * 
 	 */
 	public BinaryTree()
 	{
-		map = new TreeMap<Character, Integer>();
+		map = new HashMap<Character, Integer>();
+		pq = new PriorityQueue(huffmanComparator);
 	}
 	
-	public TreeMap<Character, Integer> getMap()
+	public HashMap<Character, Integer> getMap()
 	{
 		return map;
 	}
@@ -28,6 +54,24 @@ public class BinaryTree
 	public void createATree(String text)
 	{
 		characterCount(text);
+		
+		Set<Character> characters = map.keySet();
+		Collection<Integer> frequency = map.values();
+		
+		Iterator<Character> c = characters.iterator();
+		Iterator<Integer> f = frequency.iterator();
+		
+		for (int i = 0; i < characters.size(); i++)
+		{		
+			pq.add(new HuffmanNode(c.next(), f.next()));
+		}
+		
+		Iterator<HuffmanNode> hn = pq.iterator();
+		for (int i = 0; i < pq.size(); i++)
+		{
+			HuffmanNode node = hn.next();
+			System.out.println(node.getCharacter() + " " + node.getFrequency());
+		}
 	}
 
 	/**
@@ -49,6 +93,6 @@ public class BinaryTree
 			}
 		}
 		
-		System.out.print(map);
+		System.out.println(map);
 	}
 }
