@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Set;
-=======
-import java.util.HashMap;
-import java.util.PriorityQueue;
->>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 
 /**
  * @author Jakub Janas
@@ -16,14 +11,13 @@ import java.util.PriorityQueue;
  */
 public class BinaryTree
 {
-<<<<<<< HEAD
 	public static Comparator<HuffmanNode> huffmanComparator = new Comparator<HuffmanNode>()
 	{
 		@Override
 		public int compare(HuffmanNode node1, HuffmanNode node2) {
 			if (node1.getFrequency() > node2.getFrequency())
 			{
-				return (int) -1;
+				return (int) 1;
 			}
 			else if (node1.getFrequency() == node2.getFrequency())
 			{
@@ -31,13 +25,10 @@ public class BinaryTree
 			}
 			else
 			{
-				return (int) 1;
+				return (int) -1;
 			}
         }
 	};
-	
-=======
->>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 	private HashMap<Character, Integer> map;
 	private PriorityQueue<HuffmanNode> pq;
 	
@@ -47,25 +38,18 @@ public class BinaryTree
 	public BinaryTree()
 	{
 		map = new HashMap<Character, Integer>();
-<<<<<<< HEAD
-		pq = new PriorityQueue(huffmanComparator);
-=======
-		pq = new PriorityQueue<HuffmanNode>();
->>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
+		pq = new PriorityQueue<HuffmanNode>(huffmanComparator);
 	}
 	
 	public HashMap<Character, Integer> getMap()
 	{
 		return map;
 	}
-<<<<<<< HEAD
-=======
 	
 	public PriorityQueue<HuffmanNode> getPQ()
 	{
 		return pq;
 	}
->>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 
 	/**
 	 * 
@@ -74,7 +58,6 @@ public class BinaryTree
 	public void createATree(String text)
 	{
 		characterCount(text);
-<<<<<<< HEAD
 		
 		Set<Character> characters = map.keySet();
 		Collection<Integer> frequency = map.values();
@@ -91,10 +74,8 @@ public class BinaryTree
 		for (int i = 0; i < pq.size(); i++)
 		{
 			HuffmanNode node = hn.next();
-			System.out.println(node.getCharacter() + " " + node.getFrequency());
+			node.print();
 		}
-=======
->>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 	}
 
 	/**
@@ -116,15 +97,6 @@ public class BinaryTree
 			}
 		}
 		
-<<<<<<< HEAD
 		System.out.println(map);
-=======
-		sort();
-	}
-
-	private void sort()
-	{
-		
->>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
 	}
 }
