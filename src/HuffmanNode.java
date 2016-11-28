@@ -11,15 +11,36 @@ public class HuffmanNode
 	private char character;
 	private int frequency;
 	
+	private HuffmanNode left;
+	private HuffmanNode right;
+	
+	
+	/**
+	 * A basic constructor.
+	 */
 	public HuffmanNode()
 	{
 		
 	}
 	
+	/**
+	 * This is a constructor for standard HuffmanNode for the first priority
+	 * queue.
+	 * 
+	 * @param key
+	 * @param value
+	 */
 	public HuffmanNode(char key, int value)
 	{
 		character = key;
 		frequency = value;
+	}
+	
+	public HuffmanNode(char key, int value, HuffmanNode leftNode, HuffmanNode rightNode)
+	{
+		this(key,value);
+		left = leftNode;
+		right = rightNode;
 	}
 	
 	public char getCharacter()
