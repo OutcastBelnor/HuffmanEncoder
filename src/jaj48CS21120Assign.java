@@ -43,7 +43,15 @@ public class jaj48CS21120Assign
 					break;
 					
 				case "3":
-					Encode();
+					encode();
+					break;
+					
+				case "4":
+					dictionary.print();
+					break;
+					
+				case "5":
+					displayStats();
 					break;
 					
 				case "Q":
@@ -67,6 +75,8 @@ public class jaj48CS21120Assign
 		 System.out.println("\n1. Read in from the file.\n" +
 					"2. Print the text\n" +
 					"3. Encode the text\n" +
+					"4. Display the dictionary\n" +
+					"5. Statistics\n" +
 				 	"Q. Quit\n");
 	}
 
@@ -76,6 +86,7 @@ public class jaj48CS21120Assign
 	 */
 	private void readFile()
 	{
+		dictionary = new Dictionary();
 		text = "";
 		while (text == "")
 		{
@@ -94,11 +105,18 @@ public class jaj48CS21120Assign
 		}
 	}
 	
-	private void Encode()
+	private void encode()
 	{
 		System.out.println("Encoding sequence starting...");
 		
 		dictionary.createATree(text);
+		
+		System.out.println("Dictionary created.");
+	}
+	
+	public void displayStats()
+	{
+		dictionary.stats();
 	}
 
 	public static void main(String[] args) throws FileNotFoundException

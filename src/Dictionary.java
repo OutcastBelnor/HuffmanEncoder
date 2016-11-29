@@ -33,6 +33,8 @@ public class Dictionary
 	private PriorityQueue<HuffmanNode> pq;
 	private PriorityQueue<HuffmanNode> binaryTree;
 	private HashMap<Character, String> dictionary;
+	private int height;
+	int depths[];
 	
 	/**
 	 * 
@@ -43,18 +45,30 @@ public class Dictionary
 		pq = new PriorityQueue<HuffmanNode>(huffmanComparator);
 		binaryTree = new PriorityQueue<HuffmanNode>(huffmanComparator);
 		dictionary = new HashMap<Character, String>();
-	}
-	
-	public HashMap<Character, Integer> getMap()
-	{
-		return map;
-	}
-	
-	public PriorityQueue<HuffmanNode> getPQ()
-	{
-		return pq;
+		height = 0;
 	}
 
+	public void print()
+	{
+		if (!dictionary.isEmpty())
+		{
+			Set<Character> characters = dictionary.keySet();
+			Collection<String> code = dictionary.values();
+			
+			Iterator<Character> c = characters.iterator();
+			Iterator<String> cd = code.iterator();
+			
+			for (int i = 0; i < characters.size(); i++)
+			{		
+				System.out.println(c.next() + " = " + cd.next());
+			}
+		}
+		else
+		{
+			System.out.println("There isn't any encoded dictionary yet!");
+		}
+	}
+	
 	/**
 	 * This method overlooks the process of creating a Huffman's encoding scheme
 	 * binary tree.
@@ -93,7 +107,7 @@ public class Dictionary
 			}
 		}
 		
-		System.out.println(map);
+//		System.out.println(map);
 	}
 	
 	/**
@@ -157,15 +171,18 @@ public class Dictionary
 			String combinedChars = minOne.getCharacters() + minTwo.getCharacters();
 			int combinedFrequency = minOne.getFrequency() + minTwo.getFrequency();
 			
-			HuffmanNode newNode = new HuffmanNode(combinedChars, combinedFrequency, minTwo, minOne);
+			HuffmanNode newNode = new HuffmanNode(combinedChars, combinedFrequency, minOne, minTwo);
+			
+			minOne.setParentNode(newNode);
+			minTwo.setParentNode(newNode);
 			
 			binaryTree.add(newNode);
 		}
 		
-		for (HuffmanNode node : binaryTree)
-		{
-			node.print();
-		}
+//		for (HuffmanNode node : binaryTree)
+//		{
+//			node.print();
+//		}
 	}
 
 	/**
@@ -199,10 +216,78 @@ public class Dictionary
 		return min;
 	}
 
+	/**
+	 * This method creates a dictionary for characters in the input text
+	 * i.e. it generates a binary-like code for each characters. The most
+	 * common character has the shortest code.
+	 */
 	private void creatingDictionary()
 	{
 		Set<Character> characters = map.keySet();
+		Iterator<Character> c = characters.iterator();
+		depths = new int[characters.size()];
 		
+		for (int i = 0; i < characters.size(); i++)
+		{
+			Character ch = c.next();
+			String character = "" + ch;
+			HuffmanNode characterNode = findCharacterNode(character);
+			
+			String binaryCode = "";
+			
+			while (characterNode.getParentNode() != null)
+			{
+				depths[i]++;
+				HuffmanNode parent = characterNode.getParentNode();
+				
+				if (characterNode == parent.getLeftNode())
+				{
+					binaryCode = "0" + binaryCode;
+				}
+				else if (characterNode == parent.getRightNode())
+				{
+					binaryCode = "1" + binaryCode;
+				}
+				
+				characterNode = parent;
+			}
+
+			dictionary.put(ch, binaryCode);
+		}
 		
+//		System.out.println(dictionary);
+	}
+	
+	private HuffmanNode findCharacterNode(String character)
+	{
+		HuffmanNode characterNode = null;
+		
+		for (HuffmanNode node : binaryTree)
+		{
+			if (character.equals(node.getCharacters()))
+			{
+				characterNode = node;
+			}
+		}
+		
+		return characterNode;
+	}
+	
+	public void stats()
+	{
+		int averageDepth = 0;
+		for (int i = 0; i < depths.length; i++)
+		{
+			if (height < depths[i])
+			{
+				height = depths[i];
+			}
+			averageDepth += depths[i];
+		}
+		averageDepth /= depths.length;
+		
+		System.out.println("Height: " + height);
+		System.out.println("Number of nodes: " + binaryTree.size());
+		System.out.println("Average depth: " +  averageDepth);
 	}
 }

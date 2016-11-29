@@ -9,6 +9,7 @@ public class HuffmanNode
 	
 	private HuffmanNode left = null;
 	private HuffmanNode right = null;
+	private HuffmanNode parent = null;
 	
 	private boolean checked = false;
 	
@@ -73,14 +74,14 @@ public class HuffmanNode
 		return right;
 	}
 	
-	public void setLeftNode(HuffmanNode leftNode)
+	public HuffmanNode getParentNode()
 	{
-		left = leftNode;
+		return parent;
 	}
 	
-	public void setRightNode(HuffmanNode rightNode)
+	public void setParentNode(HuffmanNode parentNode)
 	{
-		left = rightNode;
+		parent = parentNode;
 	}
 	
 	public boolean isChecked()
