@@ -1,18 +1,16 @@
 /**
-<<<<<<< HEAD
- * @author outca_000
-=======
  * @author Jakub Janas
->>>>>>> f2a73cd1a141feb393b49137dcdebe378095eee7
  *
  */
 public class HuffmanNode
 {
-	private char character;
+	private String characters;
 	private int frequency;
 	
-	private HuffmanNode left;
-	private HuffmanNode right;
+	private HuffmanNode left = null;
+	private HuffmanNode right = null;
+	
+	private boolean checked = false;
 	
 	
 	/**
@@ -30,22 +28,29 @@ public class HuffmanNode
 	 * @param key
 	 * @param value
 	 */
-	public HuffmanNode(char key, int value)
+	public HuffmanNode(String key, int value)
 	{
-		character = key;
+		characters = key;
 		frequency = value;
 	}
 	
-	public HuffmanNode(char key, int value, HuffmanNode leftNode, HuffmanNode rightNode)
+	/**
+	 * This is a constructor for priority queue used for creating a binary tree.
+	 * @param key
+	 * @param value
+	 * @param leftNode
+	 * @param rightNode
+	 */
+	public HuffmanNode(String key, int value, HuffmanNode leftNode, HuffmanNode rightNode)
 	{
 		this(key,value);
 		left = leftNode;
 		right = rightNode;
 	}
 	
-	public char getCharacter()
+	public String getCharacters()
 	{
-		return character;
+		return characters;
 	}
 	
 	public int getFrequency()
@@ -58,8 +63,38 @@ public class HuffmanNode
 		frequency++;
 	}
 	
+	public HuffmanNode getLeftNode()
+	{
+		return left;
+	}
+	
+	public HuffmanNode getRightNode()
+	{
+		return right;
+	}
+	
+	public void setLeftNode(HuffmanNode leftNode)
+	{
+		left = leftNode;
+	}
+	
+	public void setRightNode(HuffmanNode rightNode)
+	{
+		left = rightNode;
+	}
+	
+	public boolean isChecked()
+	{
+		return checked;
+	}
+	
+	public void setChecked()
+	{
+		checked = true;
+	}
+	
 	public void print()
 	{
-		System.out.println("Character: " + character + " Frequency: " + frequency);
+		System.out.println("Character: " + characters + " Frequency: " + frequency);
 	}
 }

@@ -1,7 +1,5 @@
-import java.util.HashMap;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 
 /**
  * @author Jakub Janas
@@ -10,13 +8,13 @@ import java.io.FileReader;
 public class jaj48CS21120Assign
 {
 	private static Scanner in;
-	private HashMap hashMap;
 	private String text;
-	private BinaryTree binaryTree;
+	private Dictionary dictionary;
 
 	public jaj48CS21120Assign() throws FileNotFoundException
 	{
 		in = new Scanner (System.in);
+		dictionary = new Dictionary();
 	}
 
 	/**
@@ -100,8 +98,7 @@ public class jaj48CS21120Assign
 	{
 		System.out.println("Encoding sequence starting...");
 		
-		binaryTree = new BinaryTree();
-		binaryTree.createATree(text);
+		dictionary.createATree(text);
 	}
 
 	public static void main(String[] args) throws FileNotFoundException
