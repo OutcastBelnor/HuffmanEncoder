@@ -1,3 +1,4 @@
+package uk.ac.aber.dcs.jaj48CS21120Assign;
 /**
  * @author Jakub Janas
  *
@@ -37,6 +38,7 @@ public class HuffmanNode
 	
 	/**
 	 * This is a constructor for priority queue used for creating a binary tree.
+	 * 
 	 * @param key
 	 * @param value
 	 * @param leftNode
@@ -49,51 +51,88 @@ public class HuffmanNode
 		right = rightNode;
 	}
 	
+	/**
+	 * This method returns characters.
+	 * @return characters
+	 */
 	public String getCharacters()
 	{
 		return characters;
 	}
 	
+	/**
+	 * This method returns frequency.
+	 * @return
+	 */
 	public int getFrequency()
 	{
 		return frequency;
 	}
 	
+	/**
+	 * This method increments frequency.
+	 */
 	public void increment()
 	{
 		frequency++;
 	}
 	
+	/**
+	 * This method returns left node.
+	 * @return left
+	 */
 	public HuffmanNode getLeftNode()
 	{
 		return left;
 	}
 	
+	/**
+	 * This method returns right node.
+	 * @return right
+	 */
 	public HuffmanNode getRightNode()
 	{
 		return right;
 	}
 	
+	/**
+	 * This method returns parent node.
+	 * @return parent
+	 */
 	public HuffmanNode getParentNode()
 	{
 		return parent;
 	}
 	
+	/**
+	 * This method sets the parent node
+	 * @param parentNode becomes parent
+	 */
 	public void setParentNode(HuffmanNode parentNode)
 	{
 		parent = parentNode;
 	}
 	
+	/**
+	 * This method returns checked.
+	 * @return checked
+	 */
 	public boolean isChecked()
 	{
 		return checked;
 	}
 	
+	/**
+	 * This method sets the bool variable to true.
+	 */
 	public void setChecked()
 	{
 		checked = true;
 	}
 	
+	/**
+	 * This method prints the characters and frequency of the node.
+	 */
 	public void print()
 	{
 		System.out.println("Character: " + characters + " Frequency: " + frequency);
