@@ -42,23 +42,6 @@ public class Dictionary
 		dictionary = new HashMap<Character, String>();
 		height = 0;
 	}
-
-	/**
-	 *  This method prints the dictionary HashMap in a nice way.
-	 */
-	public void print()
-	{
-		Set<Character> characters = dictionary.keySet();
-		Collection<String> code = dictionary.values();
-		
-		Iterator<Character> c = characters.iterator();
-		Iterator<String> cd = code.iterator();
-		
-		for (int i = 0; i < characters.size(); i++)
-		{		
-			System.out.println(c.next() + " = " + cd.next());
-		}
-	}
 	
 	/**
 	 * This method overlooks the process of creating a Huffman's encoding scheme
@@ -116,12 +99,12 @@ public class Dictionary
 			pq.add(new HuffmanNode("" + c.next(), f.next()));
 		}
 		
-		Iterator<HuffmanNode> hn = pq.iterator();
-		for (int i = 0; i < pq.size(); i++)
-		{
-			HuffmanNode node = hn.next();
-			node.print();
-		}
+//		Iterator<HuffmanNode> hn = pq.iterator();
+//		for (int i = 0; i < pq.size(); i++)
+//		{
+//			HuffmanNode node = hn.next();
+//			node.print();
+//		}
 	}
 
 	/**
@@ -220,7 +203,6 @@ public class Dictionary
 			
 			while (characterNode.getParentNode() != null)
 			{
-				depths[i]++;
 				HuffmanNode parent = characterNode.getParentNode();
 				
 				if (characterNode == parent.getLeftNode())
@@ -234,7 +216,8 @@ public class Dictionary
 				
 				characterNode = parent;
 			}
-
+			depths[i] = binaryCode.length();
+			
 			dictionary.put(ch, binaryCode);
 		}
 	}
@@ -263,9 +246,26 @@ public class Dictionary
 	/**
 	 *  This method calculates the statistics of the encoding process and prints it.
 	 */
-	public void stats()
+	public void stats(String text)
 	{
-		int averageDepth = 0;
+		int asciiSize = text.length() * 8;
+		System.out.println("Uncompressed size: " + asciiSize);
+		
+		Set<Character> characters = dictionary.keySet();
+		Iterator<Character> d = characters.iterator(); 
+		int huffmanSize = 0;
+		while (d.hasNext())
+		{
+			char character = d.next();
+			
+			huffmanSize += dictionary.get(character).length() * map.get(character);
+		}
+		System.out.println("Compressed size: " + huffmanSize);
+		
+		float ratio = (float)asciiSize / (float)huffmanSize;
+		System.out.println("Compression ratio: " + ratio);
+		
+		float averageDepth = 0;
 		for (int i = 0; i < depths.length; i++)
 		{
 			if (height < depths[i])
@@ -275,9 +275,31 @@ public class Dictionary
 			averageDepth += depths[i];
 		}
 		averageDepth /= depths.length;
+		height++;
 		
 		System.out.println("Height: " + height);
 		System.out.println("Number of nodes: " + binaryTree.size());
 		System.out.println("Average depth: " +  averageDepth);
+	}
+
+	/**
+	 *  This method prints the dictionary HashMap in a nice way.
+	 * @return 
+	 */
+	public String toString()
+	{
+		Set<Character> characters = dictionary.keySet();
+		Collection<String> code = dictionary.values();
+		
+		Iterator<Character> c = characters.iterator();
+		Iterator<String> cd = code.iterator();
+		
+		String info = "";
+		for (int i = 0; i < characters.size(); i++)
+		{		
+			info += c.next() + " = " + cd.next() + "\n";
+		}
+		
+		return info;
 	}
 }

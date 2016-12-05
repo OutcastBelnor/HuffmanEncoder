@@ -14,17 +14,7 @@ public class HuffmanNode
 	
 	private boolean checked = false;
 	
-	
-	/**
-	 * A basic constructor.
-	 */
-	public HuffmanNode()
-	{
-		
-	}
-	
-	/**
-	 * This is a constructor for standard HuffmanNode for the first priority
+	/** This is a constructor for standard HuffmanNode for the first priority
 	 * queue.
 	 * 
 	 * @param key
@@ -133,8 +123,8 @@ public class HuffmanNode
 	/**
 	 * This method prints the characters and frequency of the node.
 	 */
-	public void print()
+	public String toString()
 	{
-		System.out.println("Character: " + characters + " Frequency: " + frequency);
+		return "Character: " + characters + " Frequency: " + frequency;
 	}
 }
