@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class FileHandler
 {
-	Scanner fileReader;
+	private Scanner fileReader;
 	
 	/**
 	 * Constructor for FileHandler class.
