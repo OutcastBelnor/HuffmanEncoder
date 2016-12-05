@@ -1,3 +1,4 @@
+package uk.ac.aber.dcs.jaj48CS21120Assign;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
@@ -14,7 +15,7 @@ public class jaj48CS21120Assign
 	public jaj48CS21120Assign() throws FileNotFoundException
 	{
 		in = new Scanner (System.in);
-		dictionary = new Dictionary();
+//		dictionary = new Dictionary();
 	}
 
 	/**
@@ -39,7 +40,7 @@ public class jaj48CS21120Assign
 					break;
 					
 				case "2":
-					System.out.println("\n\n" + text + "\n");
+					printFile();
 					break;
 					
 				case "3":
@@ -47,7 +48,7 @@ public class jaj48CS21120Assign
 					break;
 					
 				case "4":
-					dictionary.print();
+					displayDictionary();
 					break;
 					
 				case "5":
@@ -61,7 +62,7 @@ public class jaj48CS21120Assign
 		
 		in.close();
 	}
-	
+
 	/**
 	 * This method prints the menu.
 	 */
@@ -99,19 +100,69 @@ public class jaj48CS21120Assign
 			}
 		}
 	}
-	
+
+	/**
+	 *  This method prints the contents of the file.
+	 */
+	private void printFile()
+	{	
+		if (dictionary != null)
+		{
+			System.out.println("\n\n" + text + "\n");
+		}
+		else
+		{
+			System.out.println("Dictionary wasn't encoded yet!");
+		}
+	}
+
+	/**
+	 *  This method encodes the dictionary based on the file.
+	 */
 	private void encode()
 	{
-		System.out.println("Encoding sequence starting...");
-		
-		dictionary.createATree(text);
-		
-		System.out.println("Dictionary created.");
+		if (dictionary != null)
+		{
+			System.out.println("Encoding sequence starting...");
+			
+			dictionary.createATree(text);
+			
+			System.out.println("Dictionary created.");
+		}
+		else
+		{
+			System.out.println("Dictionary wasn't encoded yet!");
+		}
+	}
+
+	/**
+	 *  This method prints the dictionary.
+	 */
+	private void displayDictionary()
+	{
+		if (dictionary != null)
+		{
+			dictionary.print();
+		}
+		else
+		{
+			System.out.println("Dictionary wasn't encoded yet!");
+		}
 	}
 	
+	/**
+	 *  This method displays the statistics of encoding process.
+	 */
 	public void displayStats()
 	{
-		dictionary.stats();
+		if (dictionary != null)
+		{
+			dictionary.stats();
+		}
+		else
+		{
+			System.out.println("Dictionary wasn't encoded yet!");
+		}
 	}
 
 	public static void main(String[] args) throws FileNotFoundException

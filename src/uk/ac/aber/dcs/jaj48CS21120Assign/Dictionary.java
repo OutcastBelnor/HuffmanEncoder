@@ -1,3 +1,4 @@
+package uk.ac.aber.dcs.jaj48CS21120Assign;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -11,33 +12,27 @@ import java.util.Set;
  */
 public class Dictionary
 {
+	/**
+	 *  Custom comparator for the priority queue which sorts in the descending order.
+	 */
 	public static Comparator<HuffmanNode> huffmanComparator = new Comparator<HuffmanNode>()
 	{
 		@Override
-		public int compare(HuffmanNode node1, HuffmanNode node2) {
-			if (node1.getFrequency() > node2.getFrequency())
-			{
-				return (int) -1;
-			}
-			else if (node1.getFrequency() == node2.getFrequency())
-			{
-				return (int) 0;
-			}
-			else
-			{
-				return (int) 1;
-			}
+		public int compare(HuffmanNode node1, HuffmanNode node2)
+		{
+			return -(node1.getFrequency() - node2.getFrequency());
         }
 	};
-	private HashMap<Character, Integer> map;
-	private PriorityQueue<HuffmanNode> pq;
-	private PriorityQueue<HuffmanNode> binaryTree;
-	private HashMap<Character, String> dictionary;
-	private int height;
-	int depths[];
+	
+	private HashMap<Character, Integer> map; // used for counting frequency of the characters
+	private PriorityQueue<HuffmanNode> pq; // used for sorting
+	private PriorityQueue<HuffmanNode> binaryTree; // used for creating a binary tree
+	private HashMap<Character, String> dictionary; // used for storing the encoded characters
+	private int height; // the height of the binary tree
+	private int depths[]; // different depths of the tree used to calculate average depth
 	
 	/**
-	 * 
+	 *  Constructor for Dictionary class.
 	 */
 	public Dictionary()
 	{
@@ -48,24 +43,20 @@ public class Dictionary
 		height = 0;
 	}
 
+	/**
+	 *  This method prints the dictionary HashMap in a nice way.
+	 */
 	public void print()
 	{
-		if (!dictionary.isEmpty())
-		{
-			Set<Character> characters = dictionary.keySet();
-			Collection<String> code = dictionary.values();
-			
-			Iterator<Character> c = characters.iterator();
-			Iterator<String> cd = code.iterator();
-			
-			for (int i = 0; i < characters.size(); i++)
-			{		
-				System.out.println(c.next() + " = " + cd.next());
-			}
-		}
-		else
-		{
-			System.out.println("There isn't any encoded dictionary yet!");
+		Set<Character> characters = dictionary.keySet();
+		Collection<String> code = dictionary.values();
+		
+		Iterator<Character> c = characters.iterator();
+		Iterator<String> cd = code.iterator();
+		
+		for (int i = 0; i < characters.size(); i++)
+		{		
+			System.out.println(c.next() + " = " + cd.next());
 		}
 	}
 	
@@ -106,8 +97,6 @@ public class Dictionary
 				map.put(character, (map.get(character) + 1));
 			}
 		}
-		
-//		System.out.println(map);
 	}
 	
 	/**
@@ -127,16 +116,19 @@ public class Dictionary
 			pq.add(new HuffmanNode("" + c.next(), f.next()));
 		}
 		
-//		Iterator<HuffmanNode> hn = pq.iterator();
-//		for (int i = 0; i < pq.size(); i++)
-//		{
-//			HuffmanNode node = hn.next();
-//			node.print();
-//		}
+		Iterator<HuffmanNode> hn = pq.iterator();
+		for (int i = 0; i < pq.size(); i++)
+		{
+			HuffmanNode node = hn.next();
+			node.print();
+		}
 	}
 
 	/**
-	 * 
+	 *  This method constructs a binary tree according to Huffman Encoding scheme.
+	 *  The nodes from the previous priority queue become the bottom layer of the tree,
+	 *  and the tree builds up by adding two lowest frequencies of the character, until
+	 *  the pq is empty and the smallest node is the top node of the binary tree.
 	 */
 	private void constructATree()
 	{
@@ -144,9 +136,9 @@ public class Dictionary
 		{
 			HuffmanNode minOne = findSmallest();
 			minOne.setChecked();
-			if (pq.contains(minOne))
+			if (pq.contains(minOne))		// if it is a node from pq
 			{
-				pq.remove(minOne);
+				pq.remove(minOne);			// remove it from there
 			}
 			
 			HuffmanNode minTwo = findSmallest();
@@ -165,9 +157,6 @@ public class Dictionary
 				binaryTree.add(minTwo);
 			}
 			
-//			minOne.print();
-//			minTwo.print();
-			
 			String combinedChars = minOne.getCharacters() + minTwo.getCharacters();
 			int combinedFrequency = minOne.getFrequency() + minTwo.getFrequency();
 			
@@ -178,16 +167,10 @@ public class Dictionary
 			
 			binaryTree.add(newNode);
 		}
-		
-//		for (HuffmanNode node : binaryTree)
-//		{
-//			node.print();
-//		}
 	}
 
 	/**
-	 * This method finds the smallest node in both pq and binaryTree,
-	 * and if it is in pq it removes it from there.
+	 * This method finds the smallest node in both pq and binaryTree..
 	 */
 	private HuffmanNode findSmallest()
 	{
@@ -254,10 +237,14 @@ public class Dictionary
 
 			dictionary.put(ch, binaryCode);
 		}
-		
-//		System.out.println(dictionary);
 	}
 	
+	
+	/**
+	 *  This method finds the node by the provided character.
+	 * @param character
+	 * @return node with character
+	 */
 	private HuffmanNode findCharacterNode(String character)
 	{
 		HuffmanNode characterNode = null;
@@ -273,6 +260,9 @@ public class Dictionary
 		return characterNode;
 	}
 	
+	/**
+	 *  This method calculates the statistics of the encoding process and prints it.
+	 */
 	public void stats()
 	{
 		int averageDepth = 0;
