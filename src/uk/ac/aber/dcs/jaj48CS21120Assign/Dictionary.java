@@ -116,12 +116,12 @@ public class Dictionary
 			pq.add(new HuffmanNode("" + c.next(), f.next()));
 		}
 		
-		Iterator<HuffmanNode> hn = pq.iterator();
-		for (int i = 0; i < pq.size(); i++)
-		{
-			HuffmanNode node = hn.next();
-			node.print();
-		}
+//		Iterator<HuffmanNode> hn = pq.iterator();
+//		for (int i = 0; i < pq.size(); i++)
+//		{
+//			HuffmanNode node = hn.next();
+//			node.print();
+//		}
 	}
 
 	/**

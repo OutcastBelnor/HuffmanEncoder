@@ -8,14 +8,14 @@ import java.io.FileNotFoundException;
  */
 public class jaj48CS21120Assign
 {
-	private static Scanner in;
+	private Scanner in;
 	private String text;
 	private Dictionary dictionary;
 
 	public jaj48CS21120Assign() throws FileNotFoundException
 	{
 		in = new Scanner (System.in);
-//		dictionary = new Dictionary();
+		text = "";
 	}
 
 	/**
@@ -106,13 +106,13 @@ public class jaj48CS21120Assign
 	 */
 	private void printFile()
 	{	
-		if (dictionary != null)
+		if (text != "")
 		{
 			System.out.println("\n\n" + text + "\n");
 		}
 		else
 		{
-			System.out.println("Dictionary wasn't encoded yet!");
+			System.out.println("No file scanned!");
 		}
 	}
 

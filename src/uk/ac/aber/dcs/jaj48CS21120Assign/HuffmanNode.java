@@ -8,20 +8,11 @@ public class HuffmanNode
 	private String characters;
 	private int frequency;
 	
-	private HuffmanNode left = null;
-	private HuffmanNode right = null;
-	private HuffmanNode parent = null;
+	private HuffmanNode left;
+	private HuffmanNode right;
+	private HuffmanNode parent;
 	
 	private boolean checked = false;
-	
-	
-	/**
-	 * A basic constructor.
-	 */
-	public HuffmanNode()
-	{
-		
-	}
 	
 	/**
 	 * This is a constructor for standard HuffmanNode for the first priority
@@ -34,6 +25,11 @@ public class HuffmanNode
 	{
 		characters = key;
 		frequency = value;
+		
+		left = null;
+		right = null;
+		parent = null;
+		checked = false;
 	}
 	
 	/**
