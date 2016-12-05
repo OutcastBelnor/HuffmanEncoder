@@ -59,11 +59,6 @@ public class jaj48CS21120Assign
 			}
 		} while (!choice.equals("Q"));
 		
-		//System.out.print(text.length());
-		//System.out.print(toString(text[1]));
-//		char[] c_array = text.toCharArray();
-//		System.out.println(c_array);
-		
 		in.close();
 	}
 	
