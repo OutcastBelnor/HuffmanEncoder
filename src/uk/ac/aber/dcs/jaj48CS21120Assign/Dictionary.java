@@ -200,7 +200,7 @@ public class Dictionary
 			HuffmanNode characterNode = findCharacterNode(character);
 			
 			String binaryCode = "";
-			
+			depths[i] = 0;
 			while (characterNode.getParentNode() != null)
 			{
 				HuffmanNode parent = characterNode.getParentNode();
@@ -214,9 +214,11 @@ public class Dictionary
 					binaryCode = "1" + binaryCode;
 				}
 				
+				depths[i]++;
 				characterNode = parent;
 			}
-			depths[i] = binaryCode.length();
+//			depths[i] = binaryCode.length() + 1;
+			depths[i]++;
 			
 			dictionary.put(ch, binaryCode);
 		}
@@ -275,7 +277,6 @@ public class Dictionary
 			averageDepth += depths[i];
 		}
 		averageDepth /= depths.length;
-		height++;
 		
 		System.out.println("Height: " + height);
 		System.out.println("Number of nodes: " + binaryTree.size());
