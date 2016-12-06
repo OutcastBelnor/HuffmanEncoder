@@ -65,14 +65,6 @@ public class HuffmanNode
 	}
 	
 	/**
-	 * This method increments frequency.
-	 */
-//	public void increment()
-//	{
-//		frequency++;
-//	}
-	
-	/**
 	 * This method returns left node.
 	 * @return left
 	 */
