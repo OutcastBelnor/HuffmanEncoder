@@ -62,7 +62,7 @@ public class jaj48CS21120Assign
 	{
 		System.out.println("\nEncoding sequence starting...");
 		
-		dictionary.createATree(text);
+		dictionary.encode(text);
 		
 		System.out.println("Dictionary created.");
 	}

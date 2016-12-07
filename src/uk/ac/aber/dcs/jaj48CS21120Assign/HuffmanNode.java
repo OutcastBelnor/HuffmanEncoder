@@ -12,7 +12,7 @@ public class HuffmanNode
 	private HuffmanNode right;
 	private HuffmanNode parent;
 	
-	private boolean checked = false;
+	private boolean checked;
 	
 	/** This is a constructor for standard HuffmanNode for the first priority
 	 * queue.

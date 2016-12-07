@@ -47,7 +47,7 @@ public class Dictionary
 	 *  
 	 * @param text
 	 */
-	public void createATree(String text)
+	public void encode(String text)
 	{
 		characterCount(text);
 		
