@@ -194,8 +194,7 @@ public class Dictionary
 		for (int i = 0; i < characters.size(); i++)
 		{
 			Character ch = c.next();
-			String character = "" + ch;
-			HuffmanNode characterNode = findCharacterNode(character);
+			HuffmanNode characterNode = findCharacterNode("" + ch);
 			
 			String binaryCode = "";
 			while (characterNode.getParentNode() != null)
