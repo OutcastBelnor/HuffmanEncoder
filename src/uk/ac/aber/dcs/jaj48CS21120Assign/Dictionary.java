@@ -247,7 +247,6 @@ public class Dictionary
 	public void stats(String text)
 	{
 		int asciiSize = text.length() * 8;
-		System.out.println("Uncompressed size: " + asciiSize);
 		
 		Set<Character> characters = dictionary.keySet();
 		Iterator<Character> d = characters.iterator(); 
@@ -258,10 +257,8 @@ public class Dictionary
 			
 			huffmanSize += dictionary.get(character).length() * map.get(character);
 		}
-		System.out.println("Compressed size: " + huffmanSize);
 		
 		float ratio = (float)asciiSize / (float)huffmanSize;
-		System.out.println("Compression ratio: " + ratio);
 		
 		int height = 0;
 		float averageDepth = 0;
@@ -275,7 +272,10 @@ public class Dictionary
 		}
 		height += 2;
 		averageDepth /= depths.length;
-		
+
+		System.out.println("Uncompressed size: " + asciiSize);
+		System.out.println("Compressed size: " + huffmanSize);
+		System.out.println("Compression ratio: " + ratio);
 		System.out.println("Height: " + height);
 		System.out.println("Number of nodes: " + binaryTree.size());
 		System.out.println("Average depth: " +  averageDepth);

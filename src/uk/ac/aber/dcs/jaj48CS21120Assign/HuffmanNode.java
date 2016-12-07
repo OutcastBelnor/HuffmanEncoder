@@ -118,7 +118,7 @@ public class HuffmanNode
 	}
 	
 	/**
-	 * This method prints the characters and frequency of the node.
+	 * This method returns info about characters and frequency of the node.
 	 */
 	public String toString()
 	{
