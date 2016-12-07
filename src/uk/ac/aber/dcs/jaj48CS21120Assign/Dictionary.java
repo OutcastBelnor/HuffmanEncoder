@@ -28,7 +28,6 @@ public class Dictionary
 	private PriorityQueue<HuffmanNode> pq; // used for sorting
 	private PriorityQueue<HuffmanNode> binaryTree; // used for creating a binary tree
 	private HashMap<Character, String> dictionary; // used for storing the encoded characters
-	private int height; // the height of the binary tree
 	private int depths[]; // different depths of the tree used to calculate average depth
 	
 	/**
@@ -40,7 +39,6 @@ public class Dictionary
 		pq = new PriorityQueue<HuffmanNode>(huffmanComparator);
 		binaryTree = new PriorityQueue<HuffmanNode>(huffmanComparator);
 		dictionary = new HashMap<Character, String>();
-		height = 0;
 	}
 	
 	/**
@@ -200,7 +198,6 @@ public class Dictionary
 			HuffmanNode characterNode = findCharacterNode(character);
 			
 			String binaryCode = "";
-			depths[i] = 0;
 			while (characterNode.getParentNode() != null)
 			{
 				HuffmanNode parent = characterNode.getParentNode();
@@ -217,8 +214,7 @@ public class Dictionary
 				depths[i]++;
 				characterNode = parent;
 			}
-//			depths[i] = binaryCode.length() + 1;
-			depths[i]++;
+			depths[i] = binaryCode.length() - 1;
 			
 			dictionary.put(ch, binaryCode);
 		}
@@ -267,6 +263,7 @@ public class Dictionary
 		float ratio = (float)asciiSize / (float)huffmanSize;
 		System.out.println("Compression ratio: " + ratio);
 		
+		int height = 0;
 		float averageDepth = 0;
 		for (int i = 0; i < depths.length; i++)
 		{
@@ -276,6 +273,7 @@ public class Dictionary
 			}
 			averageDepth += depths[i];
 		}
+		height += 2;
 		averageDepth /= depths.length;
 		
 		System.out.println("Height: " + height);
