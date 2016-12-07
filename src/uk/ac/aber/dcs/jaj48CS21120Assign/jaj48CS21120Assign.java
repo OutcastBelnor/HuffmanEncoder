@@ -41,11 +41,11 @@ public class jaj48CS21120Assign
 		while (text == "")
 		{
 			System.out.println ("Specify the path to the file:");
-			String fileName = in.next();
+			//String fileName = in.next();
 			
 			try
 			{
-				FileHandler file = new FileHandler(fileName);
+				FileHandler file = new FileHandler(/*fileName*/"shakespeare.txt");
 				text = file.readFile();
 			}
 			catch (FileNotFoundException fnf)
