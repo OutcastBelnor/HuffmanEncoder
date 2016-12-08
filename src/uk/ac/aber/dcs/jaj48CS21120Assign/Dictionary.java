@@ -269,7 +269,7 @@ public class Dictionary
 			}
 			averageDepth += depths[i];
 		}
-		height += 2;
+		height++;
 		averageDepth /= depths.length;
 
 		System.out.println("Uncompressed size: " + asciiSize);
