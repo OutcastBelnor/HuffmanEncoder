@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.jaj48CS21120Assign;
+package huffmanEncoder;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
@@ -28,6 +28,8 @@ public class jaj48CS21120Assign
 		readFile();
 		encode();
 		displayStats();
+		
+		print();
 		
 		in.close();
 	}
@@ -74,6 +76,16 @@ public class jaj48CS21120Assign
 	{
 		System.out.println("\nCompression statistics:");
 		dictionary.stats(text);
+	}
+	
+	/**
+	 * This method prints the entire dictionary.
+	 */
+	private void print()
+	{
+		String info = dictionary.toString();
+		
+		System.out.println(info);
 	}
 
 	public static void main(String[] args) throws FileNotFoundException

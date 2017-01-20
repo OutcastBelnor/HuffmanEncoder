@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.jaj48CS21120Assign;
+package huffmanEncoder;
 /**
  * @author Jakub Janas
  *
