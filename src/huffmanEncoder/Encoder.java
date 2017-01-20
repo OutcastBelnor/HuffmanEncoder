@@ -6,13 +6,13 @@ import java.io.FileNotFoundException;
  * @author Jakub Janas
  *
  */
-public class jaj48CS21120Assign
+public class Encoder
 {
 	private Scanner in;
 	private String text;
 	private Dictionary dictionary;
 
-	public jaj48CS21120Assign() throws FileNotFoundException
+	public Encoder() throws FileNotFoundException
 	{
 		in = new Scanner (System.in);
 		text = "";
@@ -90,7 +90,7 @@ public class jaj48CS21120Assign
 
 	public static void main(String[] args) throws FileNotFoundException
 	{
-		jaj48CS21120Assign app = new jaj48CS21120Assign();
+		Encoder app = new Encoder();
 		app.runApp();
 	}
 }
