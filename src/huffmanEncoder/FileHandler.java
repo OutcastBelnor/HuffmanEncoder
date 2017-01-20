@@ -29,6 +29,8 @@ public class FileHandler
 	{
 		String text = fileReader.useDelimiter("\\Z").next();
 		
+		fileReader.close();
+		
 		return text;
 	}
 }
